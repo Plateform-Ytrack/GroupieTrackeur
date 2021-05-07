@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Locations</title>
+    <link rel="stylesheet" href="../static/css/locations.css">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/src/logo.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+
+    <script src="https://maps.google.com/maps/api/js?key=AIzaSyA7AVvIrMgQIUwFa1vmw4WWG8uuFK7MHcs" type="text/javascript"></script>
+    <script async type="text/javascript">
+        // On initialise la latitude et la longitude de Paris (centre de la carte)
+        let lati = 0;
+        let long = 0;
+        let map = null;
+
+        let villes = {}
+        let isVillesEmpty
+        
+        // Fonction d'initialisation de la carte
+        function initMap() {
+            isVillesEmpty = Object.keys(villes).length === 0 && villes.constructor === Object
+            // Créer l'objet "map" et l'insèrer dans l'élément HTML qui a l'ID "map"
+            if (lati && long && !(isVillesEmpty)) {
+                map = new google.maps.Map(document.getElementById("map"), {
+                    // Nous plaçons le centre de la carte avec les coordonnées ci-dessus
+                    center: new google.maps.LatLng(lati, long),
+                    // Nous définissons le zoom par défaut
+                    zoom: 7, 
+                    // Nous définissons le type de carte (ici carte routière)
+                    mapTypeId: google.maps.MapTypeId.ROADMAP, 
+                    // Nous activons les options de contrôle de la carte (plan, satellite...)
+                    mapTypeControl: true,
+                    // Nous désactivons la roulette de souris
+                    scrollwheel: false, 
+                    mapTypeControlOptions: {
+                        // Cette option sert à définir comment les options se placent
+                        style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR 
+                    },
+                    // Activation des options de navigation dans la carte (zoom...)
+                    navigationControl: true, 
+                    navigationControlOptions: {
+                        // Comment ces options doivent-elles s'afficher
+                        style: google.maps.NavigationControlStyle.ZOOM_PAN 
+                    }
+                });
+                for(ville in villes){
+                    var marker = new google.maps.Marker({
+                        // A chaque boucle, la latitude et la longitude sont lues dans le tableau
+                        position: {lat: villes[ville].lat, lng: villes[ville].lon},
+                        // On en profite pour ajouter une info-bulle contenant le nom de la ville
+                        title: villes[ville].city,
+                        map: map
+                    });	
+	            }
+            }
+        }
+        window.onload = function(){
+            // Fonction d'initialisation qui s'exécute lorsque le DOM est chargé
+            initMap(); 
+        };
+    </script>
+    </script>
+        <style type="text/css">
+            #map{ /* la carte DOIT avoir une hauteur sinon elle n'apparaît pas */
+                height: 450px;
+                width: 900px;
+                margin-left: 10%;
+                margin-bottom: 30px;
+                margin-top: 200px;
+            }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Groupie Tracker</h1>
+        <h4>All you want to know about concerts</h4>
+        <nav class="tabs">
+            <div class="selector"></div>
+            <a href="/home"  class="link">Accueil</a>
+            <a href="/artists" class="link">Artistes</a>
+            <a href="/dates" class="link">Dates</a>
+            <a href="#" class="link active">Villes</a>
+        </nav>
+    </div>
+    <br>
+
+    <div id="reglage">
+        <form action="" method="POST" class="formLocation">
+            <select id="name" name="name" onchange="this.form.submit()">
+                <option>Choisir un groupe ou un artiste</option>
+            </select>
+        </form>
+    </div>
+
+    <section id="section">
+        <div id="groupeName">
+            <h1>
+                
+            </h1>
+        </div>
+        <aside class="locations">
+            <article id="d-concert">
+                <div class="text">
+                    <div class="section_titre">
+                        <h2>Dernier concert</h2>
+                    </div>
+                    <div class="section_text">
+                        <span id="section_text">Le: </span>
+                        <span id="section_text1"></span>
+                        <br>
+                        <span id="section_text">Où: </span>
+                        <span id="section_text2"></span>
+                    </div>
+            </article>
+        </aside>
+        <aside class="locations">
+            <article id="p-concert">
+                <div class="text">
+                    <div class="section_titre">
+                        <h2>Futur concert</h2>
+                    </div>
+                    <div class="section_text">
+                        <span id="section_text">Le: </span>
+                        <span id="section_text3"></span>
+                        <br>
+                        <span id="section_text">Où: </span>
+                        <span id="section_text4"></span>
+                    </div>
+                </div>
+            </article>
+        </aside>
+    </section>
+
+    <div id="map">
+
+    </div>
+
+    <script>
+        let responseRelation = '{{.ResponseRelation}}'
+    </script>
+    <script src="../js/location.js" defer></script>
+    <script src="../js/geocoding.js" defer></script>
+</body>
+</html>

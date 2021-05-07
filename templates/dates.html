@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/dates.css">
+    <title>Dates</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/src/logo.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="navbar">
+      <h1>Groupie Tracker</h1>
+      <h4>All you want to know about concerts</h4>
+      <nav class="tabs">
+        <div class="selector"></div>
+        <a href="/home"  class="link">Accueil</a>
+        <a href="/artists" class="link">Artistes</a>
+        <a href="#" class="link active">Dates</a>
+        <a href="/locations" class="link">Villes</a>
+      </nav>
+    </div>
+    <div class="title">
+      <h1>&#x2728;Voici les dates de vos concert preferer ! &#x2728;</h1>
+    </div>
+    <div id="reglage">
+      <form action="" method="POST">
+        <select id="name" name="name" onchange="this.form.submit()">
+          <option>--Choose a group--</option>
+        </select>
+      </form>
+    </div>
+    <br>
+    <div class="container">
+      <div class="calendar">
+        <div class="month">
+          <i class="fas fa-angle-left prev"></i>
+            <div class="date">
+              <h1></h1>
+              <p></p>
+            </div>
+          <i class="fas fa-angle-right next"></i>
+        </div>
+        <div class="weekdays">
+          <div>Lun</div>
+          <div>Mar</div>
+          <div>Mer</div>
+          <div>Jeu</div>
+          <div>Ven</div>
+          <div>Sam</div>
+          <div>Dim</div>
+        </div>
+      <div class="days"></div> 
+    </div>
+    <div class="informations">
+      
+    </div>
+    <script>
+      let responseData = '{{.ResponseData}}'
+      let responseRelation = '{{.ResponseRelation}}'
+    </script>
+    <script src="../js/dates.js" defer></script>
+    <script src="../js/relation.js" defer></script>
+  </body>
+</html>

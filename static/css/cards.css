@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:wght@300;400;500;700');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(224, 224, 224);
+}
+
+@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:900');
+.cards {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: sans-serif;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .cards {
+        display: block;
+    }
+}
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    cursor: pointer;
+    max-height: 300px;
+    margin: 20px;
+    position: relative;
+    -webkit-tap-highlight-color: rgba(0,0,0,0.025);
+    text-align: center;
+    transition: max-height 1s;
+    width: 240px;
+    opacity: 0.8;
+}
+@media (max-width: 767px) {
+    .card {
+        left: calc(50% - 20px);
+        transform: translateX(-50%);
+    }
+}
+.card.expanded {
+    max-height: 800px;
+}
+.card.expanded .label {
+    transform: translateY(0);
+}
+.label {
+    margin-top: 30px;
+    transform: translateY(10px);
+    transition: transform 1000ms;
+}
+
+.chevron {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    bottom: 20px;
+    left: calc(50% - 15px);
+    transform-origin: 50%;
+    transform: rotate(180deg);
+    transition: transform 1000ms;
+}
+.card.expanded .chevron {
+    transform: rotate(0deg);
+    margin-top: 40px;
+
+}
+.title {
+    font-family: 'Alegreya Sans', sans-serif;
+    font-weight: 900;
+    margin: 10px 0 12px;
+}
+.body-text {
+    padding: 0 20px;
+}
+
+.image {
+    border: transparent;
+    border-radius: 9px 9px 0px 0px;
+    height: 240px;
+    width: 240px;
+}
+.image.expanded {
+    border-radius: 0px;
+}
+
+.text, .beforeMembers, .beforeDate, .creationDate, .beforeAlbum, .firstAlbum {
+    display: none;
+    transition: display 2s;
+}
+.text.displayed, .beforeMembers.displayed, .beforeDate.displayed, .creationDate.displayed, .beforeAlbum.displayed, .firstAlbum.displayed {
+    display: block;
+}
+.beforeMembers {
+    font-weight: Bold;
+}
+.beforeDate {
+    font-weight: Bold;
+}
+.beforeAlbum {
+    font-weight: Bold;
+}
+
+.datesButton {
+    display: none;
+    transition: display 2s;
+    border-radius: 15px;
+    border: 0px;
+    position: absolute;
+    margin-left: 25px;
+    background: -moz-linear-gradient(45deg, rgb(149, 153, 88) 0%, rgb(243, 214, 47) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(149, 153, 88) 0%,rgb(243, 214, 47) 100%);
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+.datesButton:hover {
+    background: -moz-linear-gradient(45deg, rgb(112, 116, 66) 0%, rgb(163, 143, 29) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(94, 97, 55) 0%,rgb(187, 164, 36) 100%);
+}
+.datesButton.displayed {
+    display: flex;
+}
+
+.locationButton {
+    display: none;
+    transition: display 2s;
+    border-radius: 15px;
+    border: 0px;
+    position: absolute;
+    margin-left: 155px;
+    text-align: center;
+    background: -moz-linear-gradient(45deg, rgb(149, 153, 88) 0%, rgb(243, 214, 47) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(149, 153, 88) 0%,rgb(243, 214, 47) 100%);
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+}
+.locationButton:hover {
+    background: -moz-linear-gradient(45deg, rgb(112, 116, 66) 0%, rgb(163, 143, 29) 100%);
+    background: -webkit-linear-gradient(45deg, rgb(94, 97, 55) 0%,rgb(187, 164, 36) 100%);
+
+}
+.locationButton:focus {
+    border: 3px;
+    border: black;
+
+}
+.locationButton.displayed {
+    display: flex;
+}
+
+.members {
+    margin-top: 10px;
+    display: none;
+    padding-left: 0;
+}
+.members.displayed {
+    display: block;
+}

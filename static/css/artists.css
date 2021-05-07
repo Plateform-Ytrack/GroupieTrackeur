@@ -1,0 +1,118 @@
+ul {
+    list-style: none;
+}
+
+.suggestions {
+    padding-left: 0;
+    margin-left: 20%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.search {
+    display: flex;
+    justify-content: center;
+}
+
+.lineDiv {
+    background-color: rgb(119, 119, 119);
+    box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+    height: 3px;
+    width: 80%;
+    border-radius: 20px;
+    margin-left: 10%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+#title {
+    margin-left: 1%;
+    margin-bottom: 30px;
+}
+
+#searchInput {
+    height: 30px;
+    width: 70%;
+    border: rgb(170, 170, 170);
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-left: 1%;
+    margin-bottom: 10px;
+    box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+    outline: none;
+}
+
+#searchSelect {
+    height: 30px;
+    border: rgb(170, 170, 170);
+    box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    margin-left: 1%;
+}
+
+.searchForm {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+}
+
+#filterSelect {
+    height: 30px;
+    border: rgb(170, 170, 170);
+    box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    margin-left: 1%;
+}
+
+#paginationSelect {
+    height: 30px;
+    border: rgb(170, 170, 170);
+    box-shadow:0px 5px 20px rgba(0,0,0,0.1);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    margin-left: 1%;
+}
+
+#paginationForm {
+    display: inline-block;
+    margin-left: 1%;
+}
+
+#filterForm {
+    display: inline-block;
+}
+
+
+input[name="buttonNext"], input[name="buttonPrevious"] { 
+    background-color: rgb(243, 243, 243);
+    height: 30px;
+    border: rgb(170, 170, 170);
+    box-shadow:0px 5px 20px rgba(0,0,0,0.2);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+    position: absolute;
+    display: inline-block;
+    margin-right: 1%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+input[name="buttonNext"] { right: 10px; }
+input[name="buttonPrevious"] { margin-left: 1%; }
+input[name="buttonNext"]:hover, input[name="buttonPrevious"]:hover { background-color: rgb(228, 228, 228); }
+input[name="buttonNext"]:focus, input[name="buttonPrevious"]:focus { background-color: rgb(173, 173, 173); }
+
+#content {
+    margin-top: 5%;
+    margin-bottom: 4%;
+}

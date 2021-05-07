@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/navbar.css">
+    <link rel="stylesheet" href="../static/css/cards.css">
+    <link rel="stylesheet" href="../static/css/artists.css">
+    <title>Artistes</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/src/logo.png">
+</head>
+<body>
+    <div class="navbar">
+        <h1>Groupie Tracker</h1>
+        <h4>All you want to know about concerts</h4>
+        <nav class="tabs">
+            <div class="selector"></div>
+            <a href="/home"  class="link">Accueil</a>
+            <a href="#" class="link active">Artistes</a>
+            <a href="/dates" class="link">Dates</a>
+            <a href="/locations" class="link">Villes</a>
+        </nav>
+    </div>
+
+    <div id="selectDiv">
+
+        <div class="lineDiv"></div>
+
+        <h1 id="title">Artist - Groupie Tracker</h1>
+        
+        <div class="search">
+            <form action="" method="post" class="searchForm">
+                <input type="text" name="searchInput" id="searchInput" placeholder="Search" autocomplete="off">
+                <select name="searchSelect" id="searchSelect">
+                    <option value="name">Name</option>
+                    <option value="biography.fullName">Full name - Members</option>
+                </select>
+            </form>
+        </div>
+        <ul class="suggestions">
+        </ul>
+
+        <br>
+
+        <form action="" method="post" id="filterForm">
+            <select name="filterSelect" id="filterSelect" onchange="this.form.submit()">
+                <option value="0">Apply filter</option>
+                <option value="1">A - Z</option>
+                <option value="2">Z - A</option>
+                <option value="3">Number of members</option>
+                <option value="4">Number of members (inverse)</option>
+                <option value="5">1st Album newest</option>
+                <option value="6">1st Album oldest</option>
+                <option value="7">Creation newest</option>
+                <option value="8">Creation oldest</option>
+            </select>
+        </form>
+
+        <form action="" method="post" id="paginationForm">
+            <select name="paginationSelect" id="paginationSelect" onchange="this.form.submit()">
+                <option value="">Number of elements</option>
+                <option value="0">All artists</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+        </form>
+
+        <div class="lineDiv"></div>
+
+    </div>
+
+    <input type="submit" name="buttonPrevious" form="paginationForm" value="Previous">
+    <input type="submit" name="buttonNext" form="paginationForm" value="Next">
+    
+    <div id="content">
+        <div class="cards">
+
+        </div>
+        <input type="submit" name="buttonPrevious" form="paginationForm" value="Previous">
+        <input type="submit" name="buttonNext" form="paginationForm" value="Next">
+    </div>
+
+    <script>
+        if ( window.history.replaceState ) {
+            window.history.replaceState( null, null, window.location.href );
+        }
+    </script>
+    <script>
+        let artists = '{{.Artists}}'
+    </script>
+    <script src="../js/display.js" defer></script>
+    <script src="../js/search.js" defer></script>
+</body>
+</html>
